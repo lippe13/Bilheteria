@@ -15,7 +15,7 @@ abstract class Evento {
 
     public Evento(String nome, Date data, String hora, String local, int quantidadeIngressos, double precoIngresso) {
         this.nome = nome;
-        this.data = data;overide
+        this.data = data;
         this.hora = hora;
         this.local = local;
         this.quantidadeIngressos = quantidadeIngressos;
@@ -84,6 +84,7 @@ class Filme extends Evento {
         this.ingressosMeiaEntradaDisponiveis = (int) (0.2 * 200); // 20% dos ingressos
     }
 
+    @Override
     public boolean podeVenderIngresso(Ingresso ingresso) {
         if (ingresso instanceof MeiaEntrada) {
             return ingressosMeiaEntradaDisponiveis > 0;
@@ -91,6 +92,7 @@ class Filme extends Evento {
         return true;
     }
 
+    @Override
     public void venderIngresso(Ingresso ingresso) {
         if (ingresso instanceof MeiaEntrada) {
             if (ingressosMeiaEntradaDisponiveis > 0) {
@@ -116,6 +118,7 @@ class Teatro extends Evento {
         this.ingressosVIPDisponiveis = (int) (0.1 * 250); // 10% dos ingressos
     }
 
+    @Override
     public boolean podeVenderIngresso(Ingresso ingresso) {
         if (ingresso instanceof MeiaEntrada) {
             return ingressosMeiaEntradaDisponiveis > 0;
@@ -125,6 +128,7 @@ class Teatro extends Evento {
         return true;
     }
 
+    @Override
     public void venderIngresso(Ingresso ingresso) {
         if (ingresso instanceof MeiaEntrada) {
             if (ingressosMeiaEntradaDisponiveis > 0) {
@@ -156,6 +160,7 @@ class Show extends Evento {
         this.ingressosVIPDisponiveis = (int) (0.1 * 150); // 10% dos ingressos
     }
 
+    @Override
     public boolean podeVenderIngresso(Ingresso ingresso) {
         if (ingresso instanceof VIP) {
             return ingressosVIPDisponiveis > 0;
@@ -163,6 +168,7 @@ class Show extends Evento {
         return true;
     }
 
+    @Override
     public void venderIngresso(Ingresso ingresso) {
         if (ingresso instanceof VIP) {
             if (ingressosVIPDisponiveis > 0) {
